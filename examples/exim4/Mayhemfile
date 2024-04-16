@@ -1,0 +1,22 @@
+# Project name that the target belongs to
+project: ethan42/exim4
+
+# Target name (should be unique within the project)
+target: exim4-stretch-20171101
+
+# Base image to run the binary in.
+image: ethan42/exim4:stretch-20171101
+
+# Turns on extra test case processing (completing a run will take longer)
+advanced_triage: true
+
+# List of commands used to test the target
+cmds:
+
+  # Command used to start the target, "@@" is the input file
+  # (when "@@" is omitted Mayhem defaults to stdin inputs)
+  - cmd: exim4 -bs -v
+
+    # Allow payloads up to 75k bytes
+    max_length: 75000
+
